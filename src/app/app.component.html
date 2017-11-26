@@ -4,11 +4,21 @@
     Welcome to {{ title }}!
   </h1>
 
+  <h3> <a href="https://www.reddit.com/user/nBeebz">nBeebz</a> designed and created the following spell cards</h3>
+  <p> The cards (as the icons and images used in them) are licensed under the Creative Commons License (CC BY-NC-SA 4.0).
+      You are free to modify and re-purpose them for non-commercial uses as long as you give appropriate credit, and release those derivative works under the same license. 
+  </p>
+
   <hr>
 
-  <ul *ngIf="spells; else home">
-    <li *ngFor="let spell of spells">{{spell.name}}</li>
-  </ul>
+
+
+  <div *ngIf="spells; else home">
+    <div class="cards" *ngFor="let spell of spells" [@cardAnimation]='spell.state' (click)="zoomCard(spell)">
+      <img src="assets/dnd-spells/dnd-cards/{{spell.name}}.png" 
+        alt="{{spell.name}}/WiP" height="422" width="422">
+    </div>
+  </div>
   <ng-template #home>
     <h2>Please Specify A Query</h2>
   </ng-template>
