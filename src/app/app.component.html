@@ -1,0 +1,18 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+  <hr>
+
+  <ul *ngIf="spells; else home">
+    <li *ngFor="let spell of spells">{{spell.name}}</li>
+  </ul>
+  <ng-template #home>
+    <h2>Please Specify A Query</h2>
+  </ng-template>
+  <button (click)=getSpells()>Spells</button>
+</div>
+
+
