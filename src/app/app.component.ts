@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { DnDataService } from './dn-data.service';
 import { HttpClient } from '@angular/common/http';
 import { trigger,state,style,transition,animate,keyframes } from '@angular/animations'
-import { animation } from './animation'
+import { animation } from './animation';
+
 
 @Component({
   selector: 'app-root',
@@ -15,9 +16,9 @@ export class AppComponent{
 
   spells: boolean = false;
 
-  spell.state: string = '';
+  state: string = '';
 
-  show: boolean true;
+  show: boolean = true;
 
   selected: {};
 
