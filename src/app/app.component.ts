@@ -13,18 +13,25 @@ import { animation } from './animation'
 })
 export class AppComponent{
 
-  spells: string[];
+  spells: boolean = false;
 
-  // state: string ='small';
+  spell.state: string = '';
+
+  show: boolean true;
+
+  selected: {};
 
   constructor(private http:HttpClient, private dataService: DnDataService) {}
 
   getSpells() {
+    this.show = true;
+    this.selected = {};
     this.dataService.getSpellData().subscribe((data) => {
       console.log(data);
       this.spells = data;
       this.spells = this.spells.map((spell)=> {
         spell.state = 'small';
+        spell.show = true;
         return spell;
       })
     })
@@ -32,7 +39,19 @@ export class AppComponent{
   }
 
   zoomCard(index){
-    index.state = (index.state === 'small' ? 'large' : 'small')
+
+    index.state = (index.state === 'small' ? 'large' : 'small');
+
+    if(index.state === 'large'){
+      this.selected = index;
+      this.show = false;      
+    }
+    else{
+      this.show = true;
+      this.selected = {};
+    }
+
+      
   }
 
 
