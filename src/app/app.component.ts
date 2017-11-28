@@ -3,7 +3,7 @@ import { DnDataService } from './dn-data.service';
 import { HttpClient } from '@angular/common/http';
 import { trigger,state,style,transition,animate,keyframes } from '@angular/animations'
 import { animation } from './animation';
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ import { animation } from './animation';
 })
 export class AppComponent{
 
-  spells: boolean = false;
+  spells;
 
   state: string = '';
 

@@ -23,13 +23,13 @@
 
   <div *ngIf="spells && show;then all else home">
   </div>
-    <ng-container *ngIf="show === true; else select" #all>
+    <div *ngIf="show === true; else select" #all>
         <div class="cards" *ngFor="let spell of spells" [@cardAnimation]='spell.state' (click)="zoomCard(spell)">
             
           <img src="assets/dnd-spells/dnd-cards/{{spell.name}}.png" alt="{{spell.name}}/WiP" height="422" width="422">
-            
-        </div>
-    </ng-container>
+
+        </div>            
+      </div>
     <ng-template #select>
         <img *ngIf="selected != {}; else all" [@cardAnimation]='selected.state' (click)="zoomCard(selected)" src="assets/dnd-spells/dnd-cards/{{selected.name}}.png" 
         alt="{{selected.name}}/WiP" max-height="100%" max-width="100%">
