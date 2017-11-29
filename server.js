@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 //Declaring JSON pathing and parsing it 
 
 //Temporary have controller in server.js
-let rawSpells = fs.readFileSync('./src/assets/dnd_spells/spells.json')
+let rawSpells = fs.readFileSync('./src/assets/dnd_spells/spells.json');
 let spells = JSON.parse(rawSpells);
 
 //If it grabbed the right amount of data.

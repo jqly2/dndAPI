@@ -15,6 +15,8 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
 
+  all;
+
   spells;
 
   // tslint:disable-next-line:member-ordering
@@ -37,18 +39,13 @@ export class AppComponent {
       this.spells = this.spells.map((spell) => {
         spell.state = 'small';
         spell.show = true;
-
-        console.log(this.show);
-        console.log(this.state);
-        console.log(this.selected);
-
         return spell;
       });
     });
 
   }
 
-  zoomCard(index){
+  zoomCard(index) {
 
     index.state = (index.state === 'small' ? 'large' : 'small');
 
