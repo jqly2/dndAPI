@@ -25,7 +25,7 @@
 
   <div class="all" *ngIf="show === true; else select">
     <div class="cards" *ngFor="let spell of spells" [@cardAnimation]='spell.state' (click)="zoomCard(spell)">
-      <img src="assets/dnd-spells/dnd-cards/{{spell.name}}.png" alt="{{spell.name}}/WiP" height="422" width="422">
+      <img src="assets/dnd_spells/dnd_cards/{{spell.name}}.png" alt="{{spell.name}}/WiP" height="422" width="422">
      </div>            
   </div>
 
