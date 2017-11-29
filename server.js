@@ -13,21 +13,25 @@ const api = require('./server/routes/api');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-//Declaring JSON pathing and
+//Declaring JSON pathing and parsing it 
+
+//Temporary have controller in server.js
 let rawSpells = fs.readFileSync('./src/assets/dnd-spells/spells.json')
 let spells = JSON.parse(rawSpells);
 
+//If it grabbed the right amount of data.
 console.log(spells.jsonSpellData.length);
 
-for (var i = 0; i < spells.jsonSpellData.length; i++){
-    console.log(spells.jsonSpellData[i].name);
-}
+// Testing for all the pulled names from the json data. 
+//  for (var i = 0; i < spells.jsonSpellData.length; i++){
+//     console.log(spells.jsonSpellData[i].name);
+// }
 
 // Angular DIST output folder
-app.use(express.static(path.join(__dirname, 'dist')));
+// app.use(express.static(path.join(__dirname, 'dist')));
 
-// API location
-app.use('/api', api);
+// Future API location
+// app.use('/api', api);
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {
@@ -35,11 +39,12 @@ app.get('*', (req, res) => {
 });
 
 //Set Port
-const port = process.env.PORT || '4200';
+const port = process.env.PORT || '8000';
 app.set('port', port);
 
 
 
 const server = http.createServer(app);
 
+//Local listening for test server
 server.listen(port, () => console.log(`Running on localhost:${port}`));

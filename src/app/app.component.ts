@@ -1,41 +1,50 @@
 import { Component } from '@angular/core';
 import { DnDataService } from './dn-data.service';
 import { HttpClient } from '@angular/common/http';
-import { trigger,state,style,transition,animate,keyframes } from '@angular/animations'
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations'
 import { animation } from './animation';
+// tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  providers:[DnDataService],
+  providers: [DnDataService],
   styleUrls: ['./app.component.css'],
-  animations:[animation],
+  animations: [animation],
 })
-export class AppComponent{
+export class AppComponent {
 
   spells;
 
-  state: string = '';
+  // tslint:disable-next-line:member-ordering
+  title = 'the Library';
 
-  show: boolean = true;
+  state = '';
+
+  show = true;
 
   selected: {};
 
-  constructor(private http:HttpClient, private dataService: DnDataService) {}
+  constructor(private http: HttpClient, private dataService: DnDataService) {}
 
   getSpells() {
     this.show = true;
     this.selected = {};
     this.dataService.getSpellData().subscribe((data) => {
-      console.log(data);
+
       this.spells = data;
-      this.spells = this.spells.map((spell)=> {
+      this.spells = this.spells.map((spell) => {
         spell.state = 'small';
         spell.show = true;
+
+        console.log(this.show);
+        console.log(this.state);
+        console.log(this.selected);
+
         return spell;
-      })
-    })
+      });
+    });
 
   }
 
@@ -43,18 +52,16 @@ export class AppComponent{
 
     index.state = (index.state === 'small' ? 'large' : 'small');
 
-    if(index.state === 'large'){
+    if (index.state === 'large')
+     // tslint:disable-next-line:one-line
+     {
       this.selected = index;
-      this.show = false;      
+      this.show = false;
     }
-    else{
+    // tslint:disable-next-line:one-line
+    else {
       this.show = true;
       this.selected = {};
     }
-
-      
   }
-
-
-  title = 'the Library';
 }
