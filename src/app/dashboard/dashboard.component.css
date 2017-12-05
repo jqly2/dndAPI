@@ -1,0 +1,8 @@
+.cards {
+    display:inline-block;
+}
+
+div.all {
+    height:60em;
+    overflow:scroll;
+}

@@ -1,0 +1,16 @@
+<div id="taskbar">
+  <!-- Only only visible if spells were not able to be fetch on load -->
+  <button *ngIf="spells == null" (click)=getSpells()>Fetch All Spells</button>
+</div>
+  <div *ngIf="spells && show; then all else home"></div>
+
+  <div class="all" *ngIf="show === true; else select">
+    <div class="cards" *ngFor="let spell of spells" [@cardAnimation]='spell.state' (click)="zoomCard(spell)">
+      <img src="assets/dnd_spells/dnd_cards/{{spell.name}}.png" alt="{{spell.name}}/WiP" height="422" width="422">
+     </div>            
+  </div>
+
+  <ng-template #select>
+    <img *ngIf="selected != {}; else all" [@cardAnimation]='selected.state' (click)="zoomCard(selected)" src="assets/dnd_spells/dnd_cards/{{selected.name}}.png" alt="{{selected.name}}/WiP" max-height="100%" max-width="100%">
+  </ng-template>
+
