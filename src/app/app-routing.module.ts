@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { SpellComponent } from './spell/spell.component';
 
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'spell', component: SpellComponent },
+  { path: '', redirectTo: '/spell', pathMatch: 'full' },
 ];
 
 @NgModule({

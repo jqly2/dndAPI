@@ -1,8 +1,10 @@
 .cards {
     display:inline-block;
+    width:30%;
+    height:auto;
 }
 
-div.all {
+#allSpells {
     height:60em;
     overflow:scroll;
 }

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map';
+import { Spell } from './spell';
 
 @Injectable()
 export class DnDataService {
@@ -11,32 +12,29 @@ export class DnDataService {
   constructor(private http: Http) { }
 
   spells;
+  search = new Array();
 
   getAllSpellData() {
-    console.log('service');
     this.spells = this.http.get('assets/dnd_spells/spells.json')
       .map((res: Response) => res.json().jsonSpellData);
     this.spells = this.spells.map((spell) => {
-      spell.state = 'small';
       return spell;
     });
-    console.log(this.spells);
     return this.spells;
   }
 
-  getSpellData(submit) {
-    this.spells = this.http.get('assets/dnd_spells/spells.json')
-      .map((res: Response) => res.json().jsonSpellData);
-    this.spells = this.spells.map((data) => {
-      data.state = 'small';
-      if (submit === data.name) {
-        return data.name;
+  getFilterSpellData(submit, obj) {
+    this.search = new Array();
+    obj.map((data) => {
+      if (data.name.toLowerCase().includes(submit)) {
+        this.search.push(data);
       }
     });
-    if (this.spells === undefined) {
-      return this.spells = {};
-    }else {
-      return this.spells;
-    }
+      if (this.search === undefined) {
+        return [];
+      }else {
+        return this.spells = this.search;
+      }
   }
 }
+
